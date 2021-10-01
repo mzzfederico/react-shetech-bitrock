@@ -1,6 +1,6 @@
 import React from 'react';
 import Tree from './tree';
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { ExternalLink } from 'react-feather';
 import config from '../../../config';
@@ -30,8 +30,8 @@ const ListItem = styled(({ className, active, level, ...props }) => {
     }
 
     ${props =>
-      props.active &&
-      `
+    props.active &&
+    `
       // color: #663399;
       border-color: rgb(230,236,241) !important;
       border-style: solid none solid solid;
@@ -110,10 +110,9 @@ const SidebarLayout = ({ location }) => (
       return (
         <Sidebar>
           {config.sidebar.title ? (
-            <div
-              className={'sidebarTitle hiddenMobile'}
-              dangerouslySetInnerHTML={{ __html: config.sidebar.title }}
-            />
+            <div className={'sidebarTitle hiddenMobile'}>
+              <Link to="/">{config.sidebar.title}</Link>
+            </div>
           ) : null}
           <ul className={'sideBarUL'}>
             <Tree edges={allMdx.edges} />
@@ -129,7 +128,7 @@ const SidebarLayout = ({ location }) => (
               }
             })}
           </ul>
-        </Sidebar>
+        </Sidebar >
       );
     }}
   />

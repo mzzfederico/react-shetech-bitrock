@@ -54,94 +54,44 @@ const StyledBgDiv = styled('div')`
 `;
 
 const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
-  <StaticQuery
-    query={graphql`
-      query headerTitleQuery {
-        site {
-          siteMetadata {
-            headerTitle
-            githubUrl
-            helpUrl
-            tweetText
-            logo {
-              link
-              image
-            }
-            headerLinks {
-              link
-              text
-            }
-          }
-        }
-      }
-    `}
-    render={data => {
-      const {
-        site: {
-          siteMetadata: { githubUrl, helpUrl, tweetText, logo, headerLinks },
-        },
-      } = data;
-
-      const finalLogoLink = logo.link !== '' ? logo.link : 'https://hasura.io/';
-
-      return (
-        <div className={'navBarWrapper'}>
-          <nav className={'navBarDefault'}>
-            <div className={'navBarHeader'}>
-              <div className={'headerTitle displayInline'}>
-                Shetech + Bitrock + React
-              </div>
-            </div>
-            {config.header.social ? (
-              <ul
-                className="socialWrapper visibleMobileView"
-                dangerouslySetInnerHTML={{ __html: config.header.social }}
-              ></ul>
-            ) : null}
-            {isSearchEnabled ? (
-              <div className={'searchWrapper hiddenMobile navBarUL'}>
-                <LoadableComponent collapse={true} indices={searchIndices} />
-              </div>
-            ) : null}
-            <div id="navbar" className={'topnav'}>
-              <div className={'visibleMobile'}>
-                <Sidebar location={location} />
-                <hr />
-              </div>
-              <ul className={'navBarUL navBarNav navBarULRight'}>
-                <li>
-                  <DarkModeSwitch
-                    isDarkThemeActive={isDarkThemeActive}
-                    toggleActiveTheme={toggleActiveTheme}
-                  />
-                </li>
-              </ul>
-            </div>
-          </nav>
-          <StyledBgDiv isDarkThemeActive={isDarkThemeActive}>
-            <div className={'navBarDefault removePadd'}>
-              <span
-                onClick={myFunction}
-                className={'navBarToggle'}
-                onKeyDown={myFunction}
-                role="button"
-                tabIndex={0}
-              >
-                <span className={'iconBar'}></span>
-                <span className={'iconBar'}></span>
-                <span className={'iconBar'}></span>
-              </span>
-            </div>
-            {isSearchEnabled ? (
-              <div className={'searchWrapper'}>
-                <LoadableComponent collapse={true} indices={searchIndices} />
-              </div>
-            ) : null}
-          </StyledBgDiv>
+  <div className={'navBarWrapper'}>
+    <nav className={'navBarDefault'}>
+      <div className={'navBarHeader'}>
+        <div className={'headerTitle displayInline'}>
+          Shetech + Bitrock
         </div>
-      );
-    }}
-  />
+      </div>
+      <div id="navbar" className={'topnav'}>
+        <div className={'visibleMobile'}>
+          <Sidebar location={location} />
+          <hr />
+        </div>
+        <ul className={'navBarUL navBarNav navBarULRight'}>
+          <li>
+            <DarkModeSwitch
+              isDarkThemeActive={isDarkThemeActive}
+              toggleActiveTheme={toggleActiveTheme}
+            />
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <StyledBgDiv isDarkThemeActive={isDarkThemeActive}>
+      <div className={'navBarDefault removePadd'}>
+        <span
+          onClick={myFunction}
+          className={'navBarToggle'}
+          onKeyDown={myFunction}
+          role="button"
+          tabIndex={0}
+        >
+          <span className={'iconBar'}></span>
+          <span className={'iconBar'}></span>
+          <span className={'iconBar'}></span>
+        </span>
+      </div>
+    </StyledBgDiv>
+  </div>
 );
 
 export default Header;
