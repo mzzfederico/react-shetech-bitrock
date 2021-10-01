@@ -37,21 +37,21 @@ const config = {
   },
   sidebar: {
     forcedNavOrder: [
-      '/what-s-react',
+      '/what-is-react',
       '/jsx',
       '/building-components',
       '/working-with-events',
       '/react-state',
-      '/how-to-create-a-simple-form',
+      '/creating-simple-forms',
       '/conditional-content',
-      '/let’s-build-a-list',
+      '/build-a-list',
     ],
     collapsedNav: [],
     links: [{ text: 'Shetech', link: 'https://shetechitaly.org' }, { text: "Bitrock", link: "https://bitrock.it" }],
     frontline: false,
     ignoreIndex: true,
     title:
-      "Shetech + Bitrock + React",
+      "Introduction to React",
   },
   siteMetadata: {
     title: 'React Bootcamp | Shetech + Bitrock',
